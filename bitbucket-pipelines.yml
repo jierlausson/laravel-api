@@ -1,0 +1,15 @@
+# This is a sample build configuration for PHP.
+pipelines:
+  branches:
+    master:
+      - step:
+          name: Deploy application to production
+          script:
+            - pipe: atlassian/rsync-deploy:0.4.4
+              variables:
+                USER: 'runcloud'
+                SERVER: '209.97.149.176'
+                REMOTE_PATH: '/home/runcloud/webapps/Api'
+                LOCAL_PATH: '.'
+                SSH_PORT: '1816'
+                DELETE_FLAG: 'false'
